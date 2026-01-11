@@ -4,6 +4,12 @@ import json
 st.title("Schedule Lynx")
 st.write("Welcome to Schedule Lynx! Upload your person.json files to get started.")
 
+# Check if 'user_data_array' exists, if not, initialize it
+if 'user_data_array' not in st.session_state:
+    st.session_state['user_data_array'] = []
+if 'user_data_file_names' not in st.session_state:
+    st.session_state['user_data_file_names'] = []
+
 # 1. Create the file uploader widget
 # type='json' restricts the user to selecting only .json files
 uploaded_file = st.file_uploader("Choose a JSON file", type=["json"])
@@ -15,17 +21,19 @@ if uploaded_file is not None:
         # Streamlit's file_uploader returns a file-like object, 
         # so we can simply pass it to json.load()
         data = json.load(uploaded_file)
+        st.session_state['user_data_array'].append(data)
+        st.session_state['user_data_file_names'].append(uploaded_file.name)
         
         # 4. Success message
         st.success("JSON loaded successfully!")
         
-        # 5. Display the data
-        # st.json() creates an interactive, collapsible view of the data
-        st.subheader(uploaded_file.name)
-        st.json(data)
+        
         
         # You can now access data as a standard Python dictionary/list
         # Example: st.write(data['some_key'])
         
     except json.JSONDecodeError:
         st.error("The file you uploaded is not valid JSON.")
+
+
+
