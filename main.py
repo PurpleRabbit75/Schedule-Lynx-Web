@@ -15,3 +15,7 @@ if uploaded_file is not None:
     # To read file as string:
     string_data = stringio.read()
     st.write(string_data)
+
+    with open(uploaded_file, 'r') as file:
+        COLORS = [tuple(color) for color in list(st.json.load(file).values())]
+    st.write(COLORS)
