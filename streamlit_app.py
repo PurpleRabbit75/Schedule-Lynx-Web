@@ -1,7 +1,16 @@
 import streamlit as st
 
-st.title("Schedule Lynx")
+# st.title("Schedule Lynx")
 
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+pages = {
+    "Main App": [
+        st.Page("main.py", title="Schedule Lynx"),
+    ],
+    "Settings": [
+        st.Page("config.py", title="Configuration"),
+        st.Page("colors.py", title="Colors"),
+    ],
+}
+
+pg = st.navigation(pages)
+pg.run()
