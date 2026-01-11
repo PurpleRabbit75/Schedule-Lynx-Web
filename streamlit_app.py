@@ -4,7 +4,9 @@ import streamlit as st
 
 pages = {
     "Main App": [
-        st.Page("main.py", title="Schedule Lynx"),
+        st.Page("upload.py", title="Upload Files"),
+        st.Page("review.py", title="Review Uploads"),
+        st.Page("download.py", title="Download Schedule"),
     ],
     "Settings": [
         st.Page("config.py", title="Configuration"),

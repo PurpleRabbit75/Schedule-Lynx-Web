@@ -16,6 +16,9 @@ if uploaded_file is not None:
         # so we can simply pass it to json.load()
         data = json.load(uploaded_file)
         
+        # 4. Success message
+        st.success("JSON loaded successfully!")
+        
         # 5. Display the data
         # st.json() creates an interactive, collapsible view of the data
         st.subheader(uploaded_file.name)
