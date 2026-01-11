@@ -1,0 +1,12 @@
+{
+    "font_size": 13,
+    "start_time": [7, 0],
+    "end_time": [22, 0],
+    "spacer_pixels": 30,
+    "schedule_column_width": 400,
+    "time_column_width": 73,
+    "row_height": 15,
+    "data_directory": "data",
+    "output_path": "schedule.jpg"
+}
+
