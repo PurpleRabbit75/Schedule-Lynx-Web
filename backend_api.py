@@ -249,7 +249,3 @@ def main():
     print("Elapsed time:", time.time() - _APPLICATION_START_TIME, "s")
     print("PROGRAM HAS TERMINATED")
 
-
-main()
-
-input("Press enter to exit the program: ")
