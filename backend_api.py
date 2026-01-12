@@ -6,6 +6,7 @@ from ImageLib2 import *
 import time
 import os
 import json
+import streamlit as st
 
 
 
@@ -142,27 +143,32 @@ def write_to_image(data):
         add_time_block(name, data[i][0], data[i][1], data[i][2])
 
 
-
 def import_schedule_JSONs():
-    schedules_list = []
-    print("Elapsed time:", time.time()- _APPLICATION_START_TIME, "s")
-    print("Loading file info...")
-
-
-    for filename in os.listdir(DATA_DIRECTORY):
-        filename = os.path.join(DATA_DIRECTORY, filename)
-        if (filename != DATA_DIRECTORY + "\\Scheduler App Archives"):
-            with open(filename, 'r') as jsonFile:
-                file = json.load(jsonFile)
-            schedules_list.append(file)
-            print(filename)
-
-    print("Elapsed time:", time.time()- _APPLICATION_START_TIME, "s")
-    print("Writing data to image...")
+    schedules_list = st.session_state['user_data_file_names']
     for i in schedules_list:
         add_name(i[0])
-    
     return schedules_list
+
+# def import_schedule_JSONs():
+#     schedules_list = []
+#     print("Elapsed time:", time.time()- _APPLICATION_START_TIME, "s")
+#     print("Loading file info...")
+
+
+#     for filename in os.listdir(DATA_DIRECTORY):
+#         filename = os.path.join(DATA_DIRECTORY, filename)
+#         if (filename != DATA_DIRECTORY + "\\Scheduler App Archives"):
+#             with open(filename, 'r') as jsonFile:
+#                 file = json.load(jsonFile)
+#             schedules_list.append(file)
+#             print(filename)
+
+#     print("Elapsed time:", time.time()- _APPLICATION_START_TIME, "s")
+#     print("Writing data to image...")
+#     for i in schedules_list:
+#         add_name(i[0])
+    
+#     return schedules_list
 
 
 
