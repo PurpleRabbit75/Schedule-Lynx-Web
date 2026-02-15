@@ -255,5 +255,5 @@ def main():
 
     print("Elapsed time:", time.time() - _APPLICATION_START_TIME, "s")
     print("PROGRAM HAS TERMINATED")
-    return img
+    return img, WIDTH
 
