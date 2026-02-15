@@ -150,28 +150,6 @@ def import_schedule_JSONs():
         add_name(i[0])
     return schedules_list
 
-# def import_schedule_JSONs():
-#     schedules_list = []
-#     print("Elapsed time:", time.time()- _APPLICATION_START_TIME, "s")
-#     print("Loading file info...")
-
-
-#     for filename in os.listdir(DATA_DIRECTORY):
-#         filename = os.path.join(DATA_DIRECTORY, filename)
-#         if (filename != DATA_DIRECTORY + "\\Scheduler App Archives"):
-#             with open(filename, 'r') as jsonFile:
-#                 file = json.load(jsonFile)
-#             schedules_list.append(file)
-#             print(filename)
-
-#     print("Elapsed time:", time.time()- _APPLICATION_START_TIME, "s")
-#     print("Writing data to image...")
-#     for i in schedules_list:
-#         add_name(i[0])
-    
-#     return schedules_list
-
-
 
 def draw_lines_and_text():
 
@@ -249,11 +227,6 @@ def main():
     for i in schedules:
         write_to_image(i)
     img = draw_lines_and_text()
-    # img.show()
-    # print("Saving to", OUTPUT_PATH)
-    # img.save(OUTPUT_PATH)
-
-    print("Elapsed time:", time.time() - _APPLICATION_START_TIME, "s")
-    print("PROGRAM HAS TERMINATED")
+    # print("Elapsed time:", time.time() - _APPLICATION_START_TIME, "s")
     return img, WIDTH
 

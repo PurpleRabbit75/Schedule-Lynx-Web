@@ -1,7 +1,5 @@
 import streamlit as st
 
-# st.title("Schedule Lynx")
-
 pages = {
     "Main App": [
         st.Page("GUI/upload.py", title="Upload Files"),
