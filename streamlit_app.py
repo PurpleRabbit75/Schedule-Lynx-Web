@@ -4,13 +4,13 @@ import streamlit as st
 
 pages = {
     "Main App": [
-        st.Page("upload.py", title="Upload Files"),
-        st.Page("review.py", title="Review Uploads"),
-        st.Page("download.py", title="Download Schedule"),
+        st.Page("GUI/upload.py", title="Upload Files"),
+        st.Page("GUI/review.py", title="Review Uploads"),
+        st.Page("GUI/download.py", title="Download Schedule"),
     ],
     "Settings": [
-        st.Page("config.py", title="Configuration"),
-        st.Page("colors.py", title="Colors"),
+        st.Page("GUI/config.py", title="Configuration"),
+        st.Page("GUI/colors.py", title="Colors"),
     ],
 }
 

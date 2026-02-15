@@ -250,8 +250,8 @@ def main():
         write_to_image(i)
     img = draw_lines_and_text()
     # img.show()
-    print("Saving to", OUTPUT_PATH)
-    img.save(OUTPUT_PATH)
+    # print("Saving to", OUTPUT_PATH)
+    # img.save(OUTPUT_PATH)
 
     print("Elapsed time:", time.time() - _APPLICATION_START_TIME, "s")
     print("PROGRAM HAS TERMINATED")
