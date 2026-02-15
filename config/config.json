@@ -1,1 +1,10 @@
-{"Crimson": [220, 20, 60], "Orange Red": [255, 69, 0], "Dark Orange": [255, 140, 0], "Gold": [255, 215, 0], "Lime Green": [50, 205, 50], "Dodger Blue": [30, 144, 255], "Medium Blue": [0, 0, 205], "Indigo": [75, 0, 130], "Blue Violet": [138, 43, 226], "Hot Pink": [255, 105, 180], "Sienna": [160, 82, 45], "Dark Gray": [169, 169, 169]}
+{
+    "font_size": 13,
+    "start_time": [7, 0],
+    "end_time": [22, 0],
+    "spacer_pixels": 30,
+    "schedule_column_width": 400,
+    "time_column_width": 73,
+    "row_height": 15,
+    "output_path": "schedule.jpg"
+}

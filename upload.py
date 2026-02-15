@@ -18,7 +18,7 @@ for i in range(num_uploads):
     uploaded_file = st.file_uploader("", type=["json"], key = i)
 
     # 2. Check if a file has been uploaded
-    if uploaded_file is not None:
+    if uploaded_file is not None and uploaded_file.name not in st.session_state['user_data_file_names']:
         try:
             # 3. Load the JSON data
             # Streamlit's file_uploader returns a file-like object, 

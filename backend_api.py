@@ -26,7 +26,7 @@ SPACER_PIXELS = config['spacer_pixels'] # Number of pixels to be inserted at the
 SCHEDULE_COLUMN_WIDTH = config['schedule_column_width'] # Width in pixels of each day's schedule column
 TIME_COLUMN_WIDTH = config['time_column_width'] # defaults to 73, which is 75 minus a 2-pixel border
 ROW_HEIGHT = config['row_height'] # Height in pixels of each time row
-DATA_DIRECTORY = config['data_directory'] # Directory where schedule JSON files are stored
+# DATA_DIRECTORY = config['data_directory'] # Directory where schedule JSON files are stored
 OUTPUT_PATH = config['output_path'] # Directory where the program outputs the file
 
 
@@ -70,19 +70,19 @@ _NAMES = [] # List of tuples in the form (name, (R, G, B))
 
 #------------------------------ FUNCTIONS ------------------------------#
 
-def add_name(name):
+def add_name(name:str):
     _NAMES.append((name, COLORS[len(_NAMES)]))
 
 
 
-def add_time_block(name, startTime, stopTime, daysStr):
+def add_time_block(name:str, startTime:list[int], stopTime:list[int], daysStr:str):
     "Add a time block to the schedule for a given name, start and stop times, and days string."
     global _NAMES
 
-    def define_block(startTime, stopTime, columnNo, weekday):
+    def define_block(startTime:list[int], stopTime:list[int], columnNo:int, weekday:int):
         "Define the coordinates of a time block given start and stop times, column number, and weekday."
 
-        def time_to_y(time):
+        def time_to_y(time:list[int]):
             "Convert a time in [hours, minutes] format to a y coordinate on the image _GRID."
             global SPACER_PIXELS, TIME_COLUMN_WIDTH
             hours, minutes = time  
@@ -117,9 +117,9 @@ def add_time_block(name, startTime, stopTime, daysStr):
 
 
 # The days of the working week are "MTWRF"
-    def dayStr2list(string):
+    def dayStr2list(string:str):
         "Take a string of format 'MTWRF' and convert it to a list of mixed numbers equal to their index + 1 (if the day is present in the string) and else = False."
-        output = [False] * 5
+        output = [0] * 5 # Changed from "False" to 0
         for i, day in enumerate('MTWRF'):
             if day in string:
                 output[i] = i + 1
@@ -139,12 +139,13 @@ def add_time_block(name, startTime, stopTime, daysStr):
 def write_to_image(data):
     "Write a single data file's information to the image _GRID. Data is in the form [name, [startTime, stopTime, daysStr, description], ...]"
     name = data[0]
+    print("Data =", data)
     for i in range(1, len(data)):
         add_time_block(name, data[i][0], data[i][1], data[i][2])
 
 
 def import_schedule_JSONs():
-    schedules_list = st.session_state['user_data_file_names']
+    schedules_list = st.session_state['user_data_array']
     for i in schedules_list:
         add_name(i[0])
     return schedules_list
@@ -248,10 +249,11 @@ def main():
     for i in schedules:
         write_to_image(i)
     img = draw_lines_and_text()
-    img.show()
+    # img.show()
     print("Saving to", OUTPUT_PATH)
     img.save(OUTPUT_PATH)
 
     print("Elapsed time:", time.time() - _APPLICATION_START_TIME, "s")
     print("PROGRAM HAS TERMINATED")
+    return img
 
